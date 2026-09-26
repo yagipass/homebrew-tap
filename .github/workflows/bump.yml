@@ -1,0 +1,56 @@
+name: bump
+
+on:
+  workflow_call:
+    inputs:
+      formula:
+        description: The formula to update, such as vbtm. Its release has one binary per platform, named <formula>-<platform>.
+        required: true
+        type: string
+      tag:
+        description: The release tag, such as v1.2.3.
+        required: true
+        type: string
+    secrets:
+      tap-token:
+        description: A token that can push to yagipass/homebrew-tap.
+        required: true
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          FORMULA: ${{ inputs.formula }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets |
+            jq -r --arg prefix "$FORMULA-" \
+              '.assets[] | select(.name | startswith($prefix)) | "\(.name) \(.digest | ltrimstr("sha256:"))"' > digests
+      - env:
+          GH_TOKEN: ${{ secrets.tap-token }}
+          FORMULA: ${{ inputs.formula }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          gh auth setup-git
+          gh repo clone yagipass/homebrew-tap tap
+          f="tap/Formula/$FORMULA.rb"
+          sed -i "s|/releases/download/[^/]*/|/releases/download/$TAG/|" "$f"
+          while read -r name digest; do
+            sed -i "/\/releases\/download\/$TAG\/$name\"/{n;s/sha256 \".*\"/sha256 \"$digest\"/}" "$f"
+          done < digests
+          grep -o 'sha256 "[0-9a-f]*"' "$f" | cut -d'"' -f2 | sort | diff <(cut -d' ' -f2 digests | sort) -
+          git -C tap diff --quiet && exit 0
+          git -C tap -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -am "$FORMULA ${TAG#v}"
+          git -C tap push
