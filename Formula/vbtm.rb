@@ -1,7 +1,7 @@
 class Vbtm < Formula
   desc "Reads .vbtm recordings and shows where the time went"
   homepage "https://github.com/yagipass/verbatime"
-  url "https://github.com/yagipass/verbatime/releases/download/v0.8.0/vbtm-macos-arm64"
+  url "https://github.com/yagipass/verbatime/releases/download/v0.8.0/vbtm-darwin-arm64"
   sha256 "ea4041efcb3d46ab65793d4b008a2203c6cc2e0c04ef124eb3471ddcfa4d2dc1"
   license "Apache-2.0"
 
