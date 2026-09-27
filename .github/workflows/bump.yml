@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       formula:
-        description: The formula to update, such as vbtm. Its release has one binary per platform, named <formula>-<platform>.
+        description: The formula to update, such as vbtm. Its release has one binary per platform, named <formula>-<platform>. <formula>-<platform>.sha256 files are ignored.
         required: true
         type: string
       tag:
@@ -35,7 +35,7 @@ jobs:
         run: |
           gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets |
             jq -r --arg prefix "$FORMULA-" \
-              '.assets[] | select(.name | startswith($prefix)) | "\(.name) \(.digest | ltrimstr("sha256:"))"' > digests
+              '.assets[] | select((.name | startswith($prefix)) and (.name | endswith(".sha256") | not)) | "\(.name) \(.digest | ltrimstr("sha256:"))"' > digests
       - env:
           GH_TOKEN: ${{ secrets.tap-token }}
           FORMULA: ${{ inputs.formula }}
