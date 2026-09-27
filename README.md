@@ -10,7 +10,8 @@ brew install yagipass/tap/vbtm
 
 ## Adding a formula
 
-1. Release one binary per platform, named `<formula>-<platform>`.
+1. Release one binary per platform, named `<formula>-<platform>`. `bump.yml` ignores
+   `<formula>-<platform>.sha256` checksum files next to them.
 2. Add `Formula/<formula>.rb` like [`vbtm.rb`](Formula/vbtm.rb), with each `sha256` right after its `url`.
 3. After uploading the binaries, call [`bump.yml`](.github/workflows/bump.yml) with a token that can push to this repository:
 
