@@ -1,11 +1,13 @@
 # yagipass/homebrew-tap
 
 ```sh
+brew install yagipass/tap/ajmx
 brew install yagipass/tap/vbtm
 ```
 
 | Formula | Description |
 |---|---|
+| [`ajmx`](https://github.com/yagipass/ajmx) | JMX CLI for AI agents |
 | [`vbtm`](https://github.com/yagipass/verbatime) | Reads .vbtm recordings and shows where the time went |
 
 ## Adding a formula
