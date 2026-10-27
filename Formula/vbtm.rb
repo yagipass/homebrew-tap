@@ -1,8 +1,8 @@
 class Vbtm < Formula
   desc "Reads .vbtm recordings and shows where the time went"
   homepage "https://github.com/yagipass/verbatime"
-  url "https://github.com/yagipass/verbatime/releases/download/v0.8.2/vbtm-darwin-arm64"
-  sha256 "48880bf5dd78ec219195ba532b501da7d935b7657e4d7b1fd497810dbb1f5b2c"
+  url "https://github.com/yagipass/verbatime/releases/download/v0.8.3/vbtm-darwin-arm64"
+  sha256 "ffc657579d6a6843ed87c4e8a39fd885e9ff1e8498bc1a0789e102827a2a7418"
   license "Apache-2.0"
 
   on_macos do
@@ -11,12 +11,12 @@ class Vbtm < Formula
 
   on_linux do
     on_arm do
-      url "https://github.com/yagipass/verbatime/releases/download/v0.8.2/vbtm-linux-arm64"
-      sha256 "54a60d5d9abc68e3d693dbdf7a855036d795ed1130ebfad3fb338e170972d9c5"
+      url "https://github.com/yagipass/verbatime/releases/download/v0.8.3/vbtm-linux-arm64"
+      sha256 "a2d84716b9615fda1e4aab55732419fb3a92fba711bdc0fba0383f1e2e8a9584"
     end
     on_intel do
-      url "https://github.com/yagipass/verbatime/releases/download/v0.8.2/vbtm-linux-amd64"
-      sha256 "815b1ec771f7ae0acbf9f048498b6528e9323b47651aeb81cb94c979969e979c"
+      url "https://github.com/yagipass/verbatime/releases/download/v0.8.3/vbtm-linux-amd64"
+      sha256 "81daa00088e1d02f0456caf16bbd1bf947e8ca88bc3065b048eda0ddeba16166"
     end
   end
 
