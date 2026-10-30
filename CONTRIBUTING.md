@@ -10,7 +10,7 @@ Open an issue before you start on a new formula or a change to `bump.yml`, with 
 
 A pull request:
 
-- references its issue (`Closes #N`).
+- references its issue (`Closes #N`), if it has one.
 - has a Conventional Commits title. Pull requests are squash-merged, so the title becomes the commit on `main`.
 
 ## Adding a formula
