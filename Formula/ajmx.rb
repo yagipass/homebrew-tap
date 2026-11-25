@@ -1,8 +1,8 @@
 class Ajmx < Formula
   desc "JMX CLI for AI agents"
   homepage "https://github.com/yagipass/ajmx"
-  url "https://github.com/yagipass/ajmx/releases/download/v0.2.2/ajmx-darwin-arm64"
-  sha256 "e96df630f1a86ab0e533cb504553233de874a02e8bf83d561874e80d6b0e31ed"
+  url "https://github.com/yagipass/ajmx/releases/download/v0.2.3/ajmx-darwin-arm64"
+  sha256 "5560b9dd3e539cb064eb591184557434f71e9f1ab23a91b407e242afc787bf26"
   license "Apache-2.0"
 
   on_macos do
@@ -11,12 +11,12 @@ class Ajmx < Formula
 
   on_linux do
     on_arm do
-      url "https://github.com/yagipass/ajmx/releases/download/v0.2.2/ajmx-linux-arm64"
-      sha256 "46123183d097870333db4b70f917b2bb552926a7b6a2fa49da2cd63c036a586b"
+      url "https://github.com/yagipass/ajmx/releases/download/v0.2.3/ajmx-linux-arm64"
+      sha256 "4994e1d5ef3c7539f2623accad2f02d25eb6eac4b287d12eef81a2ef9ed6febb"
     end
     on_intel do
-      url "https://github.com/yagipass/ajmx/releases/download/v0.2.2/ajmx-linux-amd64"
-      sha256 "97fdc82bbf91d5ae7057458ece0acb8f7b957d8914968df7ddd6e576345c0142"
+      url "https://github.com/yagipass/ajmx/releases/download/v0.2.3/ajmx-linux-amd64"
+      sha256 "49730043a97441c882d5077de2f8fe692b1619dc986bbc879b214d88eee7d860"
     end
   end
 
